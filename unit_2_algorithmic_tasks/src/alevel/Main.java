@@ -5,23 +5,33 @@ import java.util.Scanner;
 
 public class Main {
 
+    private static Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
         int check;
-        System.out.println("Select the required task: \n 1 - sum of all numbers \n 2 - sort all cyrillic and latin characters \n 3 - check endtime of the lesson");
-        check = scanner.nextInt()switch (check) {
-            case 1:
-                FoundSumOfAllNumberInString();
-                break;
-            case 2:
-                SortAllCyrillicAndLatinCharactersInString();
-                break;
-            case 3:
-                CheckEndtimeOfTheLesson();
-                break;
-            default:
-                break;
+        boolean work = true;
+        while (work) {
+            System.out.println("Select the required task: \n 1 - sum of all numbers \n 2 - sort all cyrillic and latin characters \n " +
+                                "3 - check endtime of the lesson \n 4 - exit");
+            check = scanner.nextInt();
+            switch (check) {
+                case 1:
+                    FoundSumOfAllNumberInString();
+                    break;
+                case 2:
+                    SortAllCyrillicAndLatinCharactersInString();
+                    break;
+                case 3:
+                    CheckEndtimeOfTheLesson();
+                    break;
+                case 4:
+                    work = false;
+                    break;
+                default:
+                    work = false;
+                    break;
+            }
         }
         scanner.close();
 
@@ -29,9 +39,8 @@ public class Main {
 
     public static void FoundSumOfAllNumberInString() {
 
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter a string to find the sum of all numbers inside: ");
-        String string = scanner.nextLine();
+        String string = scanner.next();
         int sum = 0;
         for (int i = 0; i < string.length(); i++) {
             if (string.codePointAt(i) > 47 && string.codePointAt(i) < 58) {
@@ -43,9 +52,8 @@ public class Main {
 
     public static void SortAllCyrillicAndLatinCharactersInString() {
 
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter a string to sort all cyrillic and latin characters inside: ");
-        String string = scanner.nextLine();
+        String string = scanner.next();
         char[] chars = string.toCharArray();
         Arrays.sort(chars);
         int count = 1;
@@ -64,7 +72,6 @@ public class Main {
 
     public static void CheckEndtimeOfTheLesson() {
 
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter number of lessons: ");
         int number = scanner.nextInt();
         int oclock = 9;
